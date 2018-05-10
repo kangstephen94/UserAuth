@@ -1,0 +1,24 @@
+<% if action == :new%>
+<%   action_url = users_url %>
+<%  button_name = "Create a new user" %>
+<% else %>
+<%   action_url = session_url %>
+<%   button_name = "Log in" %>
+<% end %>
+
+<form action="<%=action_url%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label for="username">username</label>
+  <input id="username" type="text" name="user[username]" value="<%=user.username %>">
+
+  <label for="password">password</label>
+  <input id="password" type="password" name="user[password]" value="<%=user.password %>">
+
+
+  <% if action == :new %>
+  <label for="age">age</label>
+  <input id="age" type="text" name="user[age]" value=" <%=user.age %>">
+  <% end %>
+
+  <input type="submit" value=" <%=button_name%>">
+</form>
